@@ -289,27 +289,35 @@ if(st.button("PREDICT")):
    fs=250
    no=fs*2
    f, psd = ss.welch(df['channel1'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    beta_power1 = np.sum(psd[(f >= 13) & (f <= 22)]) # Compute the beta wave power
 
    f, psd = ss.welch(df['channel2'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    beta_power2 = np.sum(psd[(f >= 13) & (f <= 22)]) 
 
    f, psd = ss.welch(df['channel3'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    beta_power3 = np.sum(psd[(f >= 13) & (f <= 22)]) 
 
    f, psd = ss.welch(df['channel4'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    beta_power4 = np.sum(psd[(f >= 13) & (f <= 22)]) 
 
    f, psd = ss.welch(df['channel5'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    beta_power5 = np.sum(psd[(f >= 13) & (f <= 22)]) 
 
    f, psd = ss.welch(df['channel6'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    beta_power6 = np.sum(psd[(f >= 13) & (f <= 22)]) 
 
    f, psd = ss.welch(df['channel7'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    beta_power7 =np.sum(psd[(f >= 13) & (f <= 22)]) 
 
    f, psd = ss.welch(df['channel8'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    beta_power8 = np.sum(psd[(f >= 13) & (f <= 22)])   
 
    beta_power=[beta_power1,beta_power2,beta_power3,beta_power4,beta_power5,beta_power6,beta_power7,beta_power8]
@@ -337,27 +345,35 @@ if(st.button("PREDICT")):
 
 
    f, psd = ss.welch(df['channel1'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    alpha_power1 = np.sum(psd[(f >= 8) & (f <= 13)]) # Compute the alpha wave power
 
    f, psd = ss.welch(df['channel2'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    alpha_power2 = np.sum(psd[(f >= 8) & (f <= 13)]) 
 
    f, psd = ss.welch(df['channel3'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    alpha_power3 = np.sum(psd[(f >= 8) & (f <= 13)]) 
 
    f, psd = ss.welch(df['channel4'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    alpha_power4 = np.sum(psd[(f >= 8) & (f <= 13)]) 
 
    f, psd = ss.welch(df['channel5'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    alpha_power5 = np.sum(psd[(f >= 8) & (f <= 13)]) 
 
    f, psd = ss.welch(df['channel6'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    alpha_power6 = np.sum(psd[(f >= 8) & (f <= 13)]) 
 
    f, psd = ss.welch(df['channel7'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    alpha_power7 = np.sum(psd[(f >= 8) & (f <= 13)]) 
 
    f, psd = ss.welch(df['channel8'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    alpha_power8 = np.sum(psd[(f >= 8) & (f <= 13)])  
 
    alpha_power=[alpha_power1,alpha_power2,alpha_power3,alpha_power4,alpha_power5,alpha_power6,alpha_power7,alpha_power8]
@@ -381,27 +397,35 @@ if(st.button("PREDICT")):
 
 
    f, psd = ss.welch(df['channel1'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    gamma_power1 = np.sum(psd[(f >= 30) & (f <= 100)])  # Compute the alpha wave power
 
    f, psd = ss.welch(df['channel2'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    gamma_power2 = np.sum(psd[(f >= 30 )& (f <= 100)]) 
 
    f, psd = ss.welch(df['channel3'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    gamma_power3 = np.sum(psd[(f >= 30) & (f <= 100)]) 
 
    f, psd = ss.welch(df['channel4'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    gamma_power4 = np.sum(psd[(f >= 30) & (f <= 100)]) 
 
    f, psd = ss.welch(df['channel5'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    gamma_power5 = np.sum(psd[(f >= 30) & (f <= 100)]) 
 
    f, psd = ss.welch(df['channel6'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    gamma_power6 = np.sum(psd[(f >= 30) & (f <= 100)]) 
 
    f, psd = ss.welch(df['channel7'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    gamma_power7 = np.sum(psd[(f >= 30) & (f <= 100)]) 
 
    f, psd = ss.welch(df['channel8'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    gamma_power8 = np.sum(psd[(f >= 30) & (f <= 100)])  
 
    gamma_power=[gamma_power1,gamma_power2,gamma_power3,gamma_power4,gamma_power5,gamma_power6,gamma_power7,gamma_power8]
@@ -424,27 +448,36 @@ if(st.button("PREDICT")):
 
 
    f, psd = ss.welch(df['channel1'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    delta_power1 = np.sum(psd[(f >= 0.5) & (f <= 4)]) 
 
    f, psd = ss.welch(df['channel2'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    delta_power2 = np.sum(psd[(f >= 0.5) & (f <= 4)])
 
    f, psd = ss.welch(df['channel3'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    delta_power3 =np.sum(psd[(f >= 0.5) & (f <= 4)]) 
 
    f, psd = ss.welch(df['channel4'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    delta_power4 = np.sum(psd[(f >= 0.5) & (f <= 4)])
 
    f, psd = ss.welch(df['channel5'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    delta_power5 = np.sum(psd[(f >= 0.5) & (f <= 4)])
 
    f, psd = ss.welch(df['channel6'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    delta_power6 =np.sum(psd[(f >= 0.5) & (f <= 4)])
 
    f, psd = ss.welch(df['channel7'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    delta_power7 =np.sum(psd[(f >= 0.5) & (f <= 4)]) 
+   
 
    f, psd = ss.welch(df['channel8'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    delta_power8 = np.sum(psd[(f >= 0.5) & (f <= 4)])   
 
    delta_power=[delta_power1,delta_power2,delta_power3,delta_power4,delta_power5,delta_power6,delta_power7,delta_power8]
@@ -469,27 +502,35 @@ if(st.button("PREDICT")):
 
 
    f, psd = ss.welch(df['channel1'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    theta_power1 = np.sum(psd[(f >= 4) & (f <= 7)]) 
 
    f, psd = ss.welch(df['channel2'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    theta_power2 = np.sum(psd[(f >= 4) & (f <= 7)]) 
 
    f, psd = ss.welch(df['channel3'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    theta_power3 = np.sum(psd[(f >= 4) & (f <= 7)]) 
 
    f, psd = ss.welch(df['channel4'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    theta_power4 = np.sum(psd[(f >= 4) & (f <= 7)]) 
 
    f, psd = ss.welch(df['channel5'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    theta_power5 = np.sum(psd[(f >= 4) & (f <= 7)]) 
 
    f, psd = ss.welch(df['channel6'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    theta_power6 = np.sum(psd[(f >= 4) & (f <= 7)]) 
 
    f, psd = ss.welch(df['channel7'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    theta_power7 = np.sum(psd[(f >= 4) & (f <= 7)]) 
 
    f, psd = ss.welch(df['channel8'], fs=250,nperseg=no)
+   psd /= np.sum(psd, axis=-1, keepdims=True)
    theta_power8 = np.sum(psd[(f >= 4) & (f <= 7)])   
 
    theta_power=[theta_power1,theta_power2,theta_power3,theta_power4,theta_power5,theta_power6,theta_power7,theta_power8]
