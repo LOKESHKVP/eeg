@@ -642,8 +642,8 @@ if(st.button("PREDICT")):
 
 
    st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Physical and mental characteristics (Frontal lobe) </h1>", unsafe_allow_html=True)
-   #bands=['Relaxed(α)','Engaged(β)','Concentrated(γ)','Dowsy(θ)']
-   bands=['Relaxed','Engaged','Concentrated','Sleepy','Dowsy']  
+   bands=['Relaxed (α)','Engaged (β)','Concentrated (γ)','Dowsy (θ)']
+   #bands=['Relaxed','Engaged','Concentrated','Sleepy','Dowsy']  
 
    percent_alpha=((alpha_power1+alpha_power2)/alpha_totalpower)*100
    percent_beta=((beta_power1+beta_power2)/beta_totalpower)*100
@@ -651,13 +651,12 @@ if(st.button("PREDICT")):
    percent_delta=((delta_power1+delta_power2)/delta_totalpower)*100
    percent_theta=((theta_power1+theta_power2)/theta_totalpower)*100
 
-   powers=[percent_alpha,percent_beta,percent_gamma,percent_delta,percent_theta]
-   import plotly.express as px
+   powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
 
    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Mental and Physical State", y="Power spectral density [%]"), color=bands)
 
    fig.update_traces(textposition='outside')
-   fig.update_layout(yaxis_ticksuffix = "%")
+   fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
    st.write(fig)
 #    powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
 
