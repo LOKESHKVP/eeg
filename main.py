@@ -678,7 +678,39 @@ if(st.button("PREDICT")):
    fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
    st.write(fig)
 
+   st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Sensation skills (Parietal lobe) </h1>", unsafe_allow_html=True)
+   bands=['Sensory Awareness (α)','Sensory Planning (β)','Sensory Perception (γ)','Sensory Attention (θ)']
 
+   percent_alpha=((alpha_power3+alpha_power4)/alpha_totalpower)*100
+   percent_beta=((beta_power3+beta_power4)/beta_totalpower)*100
+   percent_gamma=((gamma_power3+gamma_power4)/gamma_totalpower)*100
+   percent_delta=((delta_power3+delta_power4)/delta_totalpower)*100
+   percent_theta=((theta_power3+theta_power4)/theta_totalpower)*100
+
+
+   powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
+   import plotly.express as px
+   fig = px.bar(df, x=bands, y=powers,labels=dict(x="Visual Processing State", y="Power spectral density [%]"), color=bands)
+   fig.update_traces(textposition='outside')
+   fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
+   st.write(fig)
+   
+   st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Sensation skills (Temporal lobe) </h1>", unsafe_allow_html=True)
+   bands=['Sensory Awareness (α)','Sensory Planning (β)','Sensory Perception (γ)','Sensory Attention (θ)']
+
+   percent_alpha=((alpha_power3+alpha_power4)/alpha_totalpower)*100
+   percent_beta=((beta_power3+beta_power4)/beta_totalpower)*100
+   percent_gamma=((gamma_power3+gamma_power4)/gamma_totalpower)*100
+   percent_delta=((delta_power3+delta_power4)/delta_totalpower)*100
+   percent_theta=((theta_power3+theta_power4)/theta_totalpower)*100
+
+
+   powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
+   import plotly.express as px
+   fig = px.bar(df, x=bands, y=powers,labels=dict(x="Visual Processing State", y="Power spectral density [%]"), color=bands)
+   fig.update_traces(textposition='outside')
+   fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
+   st.write(fig) 
 
    prediction_input=np.array([[alpha_power1,alpha_power3,alpha_power5,alpha_power7,alpha_power2,alpha_power4,alpha_power6,alpha_power8,
                                beta_power1,beta_power3,beta_power5,beta_power7,beta_power2,beta_power4,beta_power6,beta_power8,
