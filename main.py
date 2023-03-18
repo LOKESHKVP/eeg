@@ -656,7 +656,7 @@ if(st.button("PREDICT")):
    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Mental and Physical State", y="Power spectral density [%]"), color=bands)
 
    fig.update_traces(textposition='outside')
-   fig.update_layout(yaxis_ticksuffix = "%")
+   fig.update_layout(yaxis_ticksuffix = "%",yaxis_range=[0,100])
    st.write(fig)
 
 
@@ -676,7 +676,7 @@ if(st.button("PREDICT")):
    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Visual Processing State", y="Power spectral density [%]"), color=bands)
 
    fig.update_traces(textposition='outside')
-   fig.update_layout(yaxis_ticksuffix = "%")
+   fig.update_layout(yaxis_ticksuffix = "%",yaxis_range=[0,100])
    st.write(fig)
 
 
