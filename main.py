@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 import scipy.signal as ss
 from scipy import signal
 import streamlit as st
-import plotly.express as px
 st.markdown("<h1 style ='color:black; text_align:center;font-family:times new roman;font-size:20pt; font-weight: bold;'>Analysis of eeg signal</h1>", unsafe_allow_html=True)
 st.markdown("<h1 style='text-align:center; color:white;background-color:black;font-size:14pt'>📂 Upload your CSV or Excel file. (200MB max) 📂</h1>", unsafe_allow_html=True)
 uploaded_file = st.file_uploader(label="",type=['txt'])
@@ -19,6 +18,7 @@ import tensorflow as tf
 import pickle
 global df
 import plotly.express as px
+
 from sklearn.preprocessing import StandardScaler
 
 
@@ -641,42 +641,24 @@ if(st.button("PREDICT")):
    st.write(plot)
 
 
-#    st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Physical and mental characteristics (Frontal lobe) </h1>", unsafe_allow_html=True)
-#    bands=['Relaxed (α)','Engaged (β)','Concentrated (γ)','Dowsy (θ)']
-#    #bands=['Relaxed','Engaged','Concentrated','Sleepy','Dowsy']  
+   st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Physical and mental characteristics (Frontal lobe) </h1>", unsafe_allow_html=True)
+   bands=['Relaxed (α)','Engaged (β)','Concentrated (γ)','Dowsy (θ)']
+   #bands=['Relaxed','Engaged','Concentrated','Sleepy','Dowsy']  
 
-#    percent_alpha=((alpha_power1+alpha_power2)/alpha_totalpower)*100
-#    percent_beta=((beta_power1+beta_power2)/beta_totalpower)*100
-#    percent_gamma=((gamma_power1+gamma_power2)/gamma_totalpower)*100
-#    percent_delta=((delta_power1+delta_power2)/delta_totalpower)*100
-#    percent_theta=((theta_power1+theta_power2)/theta_totalpower)*100
-
-
-#    powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
+   percent_alpha=((alpha_power1+alpha_power2)/alpha_totalpower)*100
+   percent_beta=((beta_power1+beta_power2)/beta_totalpower)*100
+   percent_gamma=((gamma_power1+gamma_power2)/gamma_totalpower)*100
+   percent_delta=((delta_power1+delta_power2)/delta_totalpower)*100
+   percent_theta=((theta_power1+theta_power2)/theta_totalpower)*100
 
 
-#    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Visual Processing State", y="Power spectral density [%]"), color=bands)
+   powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
+   import plotly.express as px
+   fig = px.bar(df, x=bands, y=powers,labels=dict(x="Mental and Physical state", y="Power spectral density [%]"), color=bands)
+   fig.update_traces(textposition='outside')
+   fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
+   st.write(fig)
 
-#    fig.update_traces(textposition='outside')
-#    fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
-#    st.write(fig)
-   
-#    try:
-#       fig = px.bar(df, x=bands, y=powers,labels=dict(x="Mental and Physical state", y="Power spectral density [%]"), color=bands)  
-
-#       fig.update_traces(textposition='outside')
-#       fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
-#       st.write(fig)
-#    except Exception as e:
-#       st.error(e)
-#    powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
-
-
-#    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Mental and Physical State", y="Power spectral density [%]"), color=bands)
-
-#    fig.update_traces(textposition='outside')
-#    fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
-#    st.write(fig)
 
 
    st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Visual Processing skills (Occipital lobe) </h1>", unsafe_allow_html=True)
@@ -691,10 +673,7 @@ if(st.button("PREDICT")):
 
    powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
    import plotly.express as px
-
-
    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Visual Processing State", y="Power spectral density [%]"), color=bands)
-
    fig.update_traces(textposition='outside')
    fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
    st.write(fig)
