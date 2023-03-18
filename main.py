@@ -690,6 +690,7 @@ if(st.button("PREDICT")):
 
 
    powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
+   import plotly.express as px
 
 
    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Visual Processing State", y="Power spectral density [%]"), color=bands)
