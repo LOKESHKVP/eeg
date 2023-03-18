@@ -658,7 +658,7 @@ if(st.button("PREDICT")):
       fig.update_traces(textposition='outside')
       fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
       st.write(fig)
-   except (Exception as e):
+   except Exception as e:
       st.error(e)
 #    powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
 
