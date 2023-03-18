@@ -641,7 +641,8 @@ if(st.button("PREDICT")):
 
 
    st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Physical and mental characteristics (Frontal lobe) </h1>", unsafe_allow_html=True)
-   bands=['Visual Focus (α)','Visual Discrimination (β)','Visual Perception (γ)','Visual Imagery (θ)']
+   bands=['Relaxed (α)','Engaged (β)','Concentrated (γ)','Dowsy (θ)']
+   
 
    percent_alpha=((alpha_power1+alpha_power2)/alpha_totalpower)*100
    percent_beta=((beta_power1+beta_power2)/beta_totalpower)*100
@@ -661,7 +662,7 @@ if(st.button("PREDICT")):
 
 
    st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Visual Processing skills (Occipital lobe) </h1>", unsafe_allow_html=True)
-   bands=['Relaxed (α)','Engaged (β)','Concentrated (γ)','Dowsy (θ)']
+   bands=['Visual Focus (α)','Visual Discrimination (β)','Visual Perception (γ)','Visual Imagery (θ)']
 
    percent_alpha=((alpha_power7+alpha_power8)/alpha_totalpower)*100
    percent_beta=((beta_power7+beta_power8)/beta_totalpower)*100
