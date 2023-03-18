@@ -547,7 +547,7 @@ if(st.button("PREDICT")):
    powers=[alpha_totalpower,beta_totalpower,gamma_totalpower,delta_totalpower,theta_totalpower]
    import plotly.express as px
 
-   fig = px.bar(df, x=bands, y=powers,labels=dict(x="Frequency bands", y="Power spectral density [µV^2/Hz]"), color=bands,
+   fig = px.bar(df, x=bands, y=powers,labels=dict(x="Frequency bands", y="Power spectral density [μV²/Hz]"), color=bands,
                  pattern_shape_sequence=[".", "x", "+"],text=powers
    )
 
@@ -618,12 +618,12 @@ if(st.button("PREDICT")):
        y = [left_gamma,right_gamma],
        text=[left_gamma,right_gamma]
        ), 
-           px.Bar(
-       name = 'delta (Deep sleep)',
-       x = x,
-       y = [left_delta,right_delta],
-       text=[left_delta,right_delta]
-       ),                   
+#            px.Bar(
+#        name = 'delta (Deep sleep)',
+#        x = x,
+#        y = [left_delta,right_delta],
+#        text=[left_delta,right_delta]
+#        ),                   
 
              px.Bar(
        name = 'theta (Dowsy)',
@@ -635,7 +635,7 @@ if(st.button("PREDICT")):
        )                      
    ])
 
-   plot.update_layout(yaxis_range=[0,0.5], yaxis_title='Power spectral density [µV^2/Hz]',xaxis_title='Parts of brain')
+   plot.update_layout(yaxis_range=[0,0.5], yaxis_title='Power spectral density [μV²/Hz]',xaxis_title='Parts of brain')
 
    st.write(plot)
 
