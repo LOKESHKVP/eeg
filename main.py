@@ -651,15 +651,24 @@ if(st.button("PREDICT")):
    percent_delta=((delta_power1+delta_power2)/delta_totalpower)*100
    percent_theta=((theta_power1+theta_power2)/theta_totalpower)*100
 
-   powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
-   try:
-      fig = px.bar(df, x=bands, y=powers,labels=dict(x="Mental and Physical state", y="Power spectral density [%]"), color=bands)  
 
-      fig.update_traces(textposition='outside')
-      fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
-      st.write(fig)
-   except Exception as e:
-      st.error(e)
+   powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
+
+
+   fig = px.bar(df, x=bands, y=powers,labels=dict(x="Mental and Physical state", y="Power spectral density [%]"), color=bands)
+
+   fig.update_traces(textposition='outside')
+   fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
+   st.write(fig)
+   
+#    try:
+#       fig = px.bar(df, x=bands, y=powers,labels=dict(x="Mental and Physical state", y="Power spectral density [%]"), color=bands)  
+
+#       fig.update_traces(textposition='outside')
+#       fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
+#       st.write(fig)
+#    except Exception as e:
+#       st.error(e)
 #    powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
 
 
