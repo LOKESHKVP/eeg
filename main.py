@@ -552,7 +552,7 @@ if(st.button("PREDICT")):
    )
 
    fig.update_traces(textposition='outside')
-   fig.update_layout(yaxis_range=[0,0.5])
+   fig.update_layout(yaxis_range=[0,5])
 
    # fig.update_xaxes(title_font=dict(color='blue'))
    # fig.update_yaxes(title_font=dict(color='blue'))
@@ -635,13 +635,13 @@ if(st.button("PREDICT")):
        )                      
    ])
 
-   plot.update_layout(yaxis_range=[0,0.5], yaxis_title='Power spectral density [μV²/Hz]',xaxis_title='Parts of brain')
+   plot.update_layout(yaxis_range=[0,5], yaxis_title='Power spectral density [μV²/Hz]',xaxis_title='Parts of brain')
 
    st.write(plot)
 
 
    st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Physical and mental characteristics (Frontal lobe) </h1>", unsafe_allow_html=True)
-   bands=['Relaxed','Engaged','Concentrated','Dowsy']
+   bands=['Visual Focus (α)','Visual Discrimination (β)','Visual Perception (γ)','Visual Imagery (θ)']
 
    percent_alpha=((alpha_power1+alpha_power2)/alpha_totalpower)*100
    percent_beta=((beta_power1+beta_power2)/beta_totalpower)*100
@@ -651,7 +651,7 @@ if(st.button("PREDICT")):
 
 
    powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
-   import plotly.express as px
+
 
    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Mental and Physical State", y="Power spectral density [%]"), color=bands)
 
@@ -661,7 +661,7 @@ if(st.button("PREDICT")):
 
 
    st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Visual Processing skills (Occipital lobe) </h1>", unsafe_allow_html=True)
-   bands=['Relaxed','Engaged','Concentrated','Dowsy']
+   bands=['Relaxed (α)','Engaged (β)','Concentrated (γ)','Dowsy (θ)']
 
    percent_alpha=((alpha_power7+alpha_power8)/alpha_totalpower)*100
    percent_beta=((beta_power7+beta_power8)/beta_totalpower)*100
@@ -671,7 +671,7 @@ if(st.button("PREDICT")):
 
 
    powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
-   import plotly.express as px
+
 
    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Visual Processing State", y="Power spectral density [%]"), color=bands)
 
