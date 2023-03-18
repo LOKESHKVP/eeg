@@ -641,7 +641,7 @@ if(st.button("PREDICT")):
 
 
    st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Physical and mental characteristics (Frontal lobe) </h1>", unsafe_allow_html=True)
-   bands=['Relaxed (α)','Engaged (β)','Concentrated (γ)','Dowsy (θ)']
+   bands=['Relaxed(α)','Engaged(β)','Concentrated(γ)','Dowsy(θ)']
    
 
    percent_alpha=((alpha_power1+alpha_power2)/alpha_totalpower)*100
@@ -657,7 +657,7 @@ if(st.button("PREDICT")):
    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Mental and Physical State", y="Power spectral density [%]"), color=bands)
 
    fig.update_traces(textposition='outside')
-   fig.update_layout(yaxis_ticksuffix = "%",yaxis_range=[0,100])
+   fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
    st.write(fig)
 
 
@@ -677,7 +677,7 @@ if(st.button("PREDICT")):
    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Visual Processing State", y="Power spectral density [%]"), color=bands)
 
    fig.update_traces(textposition='outside')
-   fig.update_layout(yaxis_ticksuffix = "%",yaxis_range=[0,100])
+   fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
    st.write(fig)
 
 
