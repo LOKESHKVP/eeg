@@ -543,8 +543,8 @@ if(st.button("PREDICT")):
    theta_totalpower=np.sum([theta_power1,theta_power3,theta_power5,theta_power7,theta_power2,theta_power4,theta_power6,theta_power8])
 
    st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Total Power vs Frequency bands</h1>", unsafe_allow_html=True)
-   bands=['alpha (Relax)','beta (Engaged)','gamma (Concentration)','delta (Deep sleep)','theta (Dowsy)']
-   powers=[alpha_totalpower,beta_totalpower,gamma_totalpower,delta_totalpower,theta_totalpower]
+   bands=['alpha (Relax)','beta (Engaged)','gamma (Concentration)','theta (Dowsy)']
+   powers=[alpha_totalpower,beta_totalpower,gamma_totalpower,theta_totalpower]
    import plotly.express as px
 
    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Frequency bands", y="Power spectral density [μV²/Hz]"), color=bands,
@@ -641,7 +641,7 @@ if(st.button("PREDICT")):
 
 
    st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Physical and mental characteristics (Frontal lobe) </h1>", unsafe_allow_html=True)
-   bands=['Relaxed','Engaged','Concentrated','Sleepy','Dowsy']
+   bands=['Relaxed','Engaged','Concentrated','Dowsy']
 
    percent_alpha=((alpha_power1+alpha_power2)/alpha_totalpower)*100
    percent_beta=((beta_power1+beta_power2)/beta_totalpower)*100
@@ -650,7 +650,7 @@ if(st.button("PREDICT")):
    percent_theta=((theta_power1+theta_power2)/theta_totalpower)*100
 
 
-   powers=[percent_alpha,percent_beta,percent_gamma,percent_delta,percent_theta]
+   powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
    import plotly.express as px
 
    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Mental and Physical State", y="Power spectral density [%]"), color=bands)
@@ -661,7 +661,7 @@ if(st.button("PREDICT")):
 
 
    st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;'>Visual Processing skills (Occipital lobe) </h1>", unsafe_allow_html=True)
-   bands=['Relaxed','Engaged','Concentrated','Sleepy','Dowsy']
+   bands=['Relaxed','Engaged','Concentrated','Dowsy']
 
    percent_alpha=((alpha_power7+alpha_power8)/alpha_totalpower)*100
    percent_beta=((beta_power7+beta_power8)/beta_totalpower)*100
@@ -670,7 +670,7 @@ if(st.button("PREDICT")):
    percent_theta=((theta_power7+theta_power8)/theta_totalpower)*100
 
 
-   powers=[percent_alpha,percent_beta,percent_gamma,percent_delta,percent_theta]
+   powers=[percent_alpha,percent_beta,percent_gamma,percent_theta]
    import plotly.express as px
 
    fig = px.bar(df, x=bands, y=powers,labels=dict(x="Visual Processing State", y="Power spectral density [%]"), color=bands)
