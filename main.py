@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 Created on Tue Mar  7 14:36:09 2023
@@ -11,9 +12,36 @@ import matplotlib.pyplot as plt
 import scipy.signal as ss
 from scipy import signal
 import streamlit as st
-st.markdown("<h1 style ='color:black; text_align:center;font-family:times new roman;font-size:20pt; font-weight: bold;'>Analysis of eeg signal</h1>", unsafe_allow_html=True)
+import base64
+
+st.set_page_config(
+page_title="Deep Wave",
+page_icon="📈"
+)
+
+
+def add_bg_from_local(image_file):
+    with open(image_file, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read())
+    st.markdown(
+    f"""
+    <style>
+    .stApp {{
+        background-image: url(data:image/{"jpg"};base64,{encoded_string.decode()});
+        background-size: cover
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True
+    )
+
+
+add_bg_from_local("gif1.gif")
+
+#st.markdown("<h1 style ='color:black; text_align:center;font-family:times new roman;font-size:32pt; font-weight: bold;'>Analysis of eeg signal</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center; color:black;background-color:#B5C489;font-size:20pt;border:5px solid black;'>DEEP WAVE - Analysis of EEG signal 📟</h1>", unsafe_allow_html=True)
 st.markdown("<h1 style='text-align:center; color:white;background-color:black;font-size:14pt'>📂 Upload your CSV or Excel file. (200MB max) 📂</h1>", unsafe_allow_html=True)
-uploaded_file = st.file_uploader(label="",type=['txt'])
+uploaded_file = st.file_uploader(label="",type=['txt','csv'])
 import tensorflow as tf
 import pickle
 global df
@@ -23,15 +51,14 @@ from sklearn.preprocessing import StandardScaler
 
 
 if(st.button("PREDICT")):
-   if uploaded_file is not None:
-      print(uploaded_file)
-
+   add_bg_from_local("new.jpg")
+   if uploaded_file is not None:      
       try:
          df = pd.read_csv(uploaded_file,skiprows=6,header=None)
          #st.write(df)
       except:
          #df = pd.read_csv(r"C:\Users\PRAMILA\Downloads\BCI_data-20230110T035009Z-001\BCI_data\normal\priyadharshini_1.txt",skiprows=6,header=None)
-         st.write("file not found")
+         df = pd.read_csv(uploaded_file)
 
    #df = pd.read_csv("priyadharshini_1.txt",skiprows=6,header=None)
    #df = pd.read_csv(uploaded_file,skiprows=6,header=None)
@@ -123,34 +150,6 @@ if(st.button("PREDICT")):
    st.write(fig)
 
 
-   # b, a = ss.iirfilter(1, Wn=50, fs=250, btype="high", ftype="butter")
-   # print(b, a, sep="\n")
-   # df['channel1'] = ss.filtfilt(b, a, df['channel1'])
-   # df['channel2'] = ss.filtfilt(b, a, df['channel2'])
-   # df['channel3'] = ss.filtfilt(b, a, df['channel3'])
-   # df['channel4'] = ss.filtfilt(b, a, df['channel4'])
-   # df['channel5'] = ss.filtfilt(b, a, df['channel5'])
-   # df['channel6'] = ss.filtfilt(b, a, df['channel6'])
-   # df['channel7'] = ss.filtfilt(b, a, df['channel7'])
-   # df['channel8'] = ss.filtfilt(b, a, df['channel8'])
-
-   # chan1 = ss.filtfilt(b, a, chan1)
-   # chan2 = ss.filtfilt(b, a, chan2)
-   # chan3 = ss.filtfilt(b, a, chan3)
-   # chan4 = ss.filtfilt(b, a, chan4)
-   # chan5 = ss.filtfilt(b, a, chan5)
-   # chan6 = ss.filtfilt(b, a, chan6)
-   # chan7 = ss.filtfilt(b, a, chan7)
-   # chan8 = ss.filtfilt(b, a, chan8)
-
-   # plt.figure(figsize=[6.4, 2.4]) 
-   # i=1
-   # for column in [chan1, chan2,chan3, chan4,chan5, chan6,chan7, chan8]:    
-   #     plt.plot(column,label="channel"+str(i))
-   #     plt.legend(loc='best')
-   #     i+=1
-
-   # st.pyplot(plt)
 
    chan1[np.abs(chan1)>5] = 0
    chan2[np.abs(chan2)>5] = 0
@@ -187,105 +186,8 @@ if(st.button("PREDICT")):
    from scipy.integrate import simps
    import scipy.stats as sst
    from matplotlib.mlab import psd
-   fs=250
-   no=fs*2
-   # def bandpower(trace,band):
-   #     f, psd = ss.welch(trace, fs=250,nperseg=no)
-   #     #total_power1 = simps(psd, dx=0.1)
-   #     power = np.sum(psd[(f >= band[0]) & (f <= band[1])])
-   #     return power
 
-
-
-   # alpha = np.zeros((12,8))
-   # beta = np.zeros((12,8))
-   # gamma = np.zeros((12,8))
-   # theta = np.zeros((12,8))
-   # delta = np.zeros((12,8))
-
-   # c=0
-   # for i in np.arange(0,len(df),len(df)//10):
-   #     print(i)
-   #     X1=df['channel1']
-   #     X2=df['channel2']
-   #     X3=df['channel3']
-   #     X4=df['channel4']
-   #     X5=df['channel5']    
-   #     X6=df['channel6']
-   #     X7=df['channel7']
-   #     X8=df['channel8']
-
-   #     print(str(i)+" : "+str(i+len(df)//10))
-   #     end=i+len(df)//10
-   #     X1=X1[i:end]
-   #     X2=X2[i:end]
-   #     X3=X3[i:end]
-   #     X4=X4[i:end]
-   #     X5=X5[i:end]
-   #     X6=X6[i:end]
-   #     X7=X7[i:end]  
-   #     X8=X8[i:end] 
-
-   #     alpha[c,0] = bandpower(X1,[8,12])
-   #     alpha[c,1] = bandpower(X2,[8,12])
-   #     alpha[c,2] = bandpower(X3,[8,12])
-   #     alpha[c,3] = bandpower(X4,[8,12])
-   #     alpha[c,4] = bandpower(X5,[8,12])
-   #     alpha[c,5] = bandpower(X6,[8,12])
-   #     alpha[c,6] = bandpower(X7,[8,12])
-   #     alpha[c,7] = bandpower(X8,[8,12])
-
-   #     beta[c,0] = bandpower(X1,[12,30])
-   #     beta[c,1] = bandpower(X2,[12,30])
-   #     beta[c,2] = bandpower(X3,[12,30])
-   #     beta[c,3] = bandpower(X4,[12,30])
-   #     beta[c,4] = bandpower(X5,[12,30])
-   #     beta[c,5] = bandpower(X6,[12,30])
-   #     beta[c,6] = bandpower(X7,[12,30])
-   #     beta[c,7] = bandpower(X8,[12,30])
-
-
-   #     gamma[c,0] = bandpower(X1,[30,100])
-   #     gamma[c,1] = bandpower(X2,[30,100])
-   #     gamma[c,2] = bandpower(X3,[30,100])
-   #     gamma[c,3] = bandpower(X4,[30,100])
-   #     gamma[c,4] = bandpower(X5,[30,100])
-   #     gamma[c,5] = bandpower(X6,[30,100])
-   #     gamma[c,6] = bandpower(X7,[30,100])
-   #     gamma[c,7] = bandpower(X8,[30,100])
-
-
-   #     theta[c,0] = bandpower(X1,[4,7])
-   #     theta[c,1] = bandpower(X2,[4,7])
-   #     theta[c,2] = bandpower(X3,[4,7])
-   #     theta[c,3] = bandpower(X4,[4,7])
-   #     theta[c,4] = bandpower(X5,[4,7])
-   #     theta[c,5] = bandpower(X6,[4,7])
-   #     theta[c,6] = bandpower(X7,[4,7])
-   #     theta[c,7] = bandpower(X8,[4,7])
-
-   #     delta[c,0] = bandpower(X1,[0.5,4])
-   #     delta[c,1] = bandpower(X2,[0.5,4])
-   #     delta[c,2] = bandpower(X3,[0.5,4])
-   #     delta[c,3] = bandpower(X4,[0.5,4])
-   #     delta[c,4] = bandpower(X5,[0.5,4])
-   #     delta[c,5] = bandpower(X6,[0.5,4])
-   #     delta[c,6] = bandpower(X7,[0.5,4])
-   #     delta[c,7] = bandpower(X8,[0.5,4])
-
-   #     c+=1
-
-   # alpha_bands = pd.DataFrame(alpha, columns = ['alpha_power_1','alpha_power_2','alpha_power_3','alpha_power_4','alpha_power_5','alpha_power_6','alpha_power_7','alpha_power_8'])
-   # beta_bands = pd.DataFrame(beta, columns = ['beta_power_1','beta_power_2','beta_power_3','beta_power_4','beta_power_5','beta_power_6','beta_power_7','beta_power_8'])
-   # gamma_bands = pd.DataFrame(gamma, columns = ['gamma_power_1','gamma_power_2','gamma_power_3','gamma_power_4','gamma_power_5','gamma_power_6','gamma_power_7','gamma_power_8'])
-   # theta_bands = pd.DataFrame(theta, columns = ['theta_power_1','theta_power_2','theta_power_3','theta_power_4','theta_power_5','theta_power_6','theta_power_7','theta_power_8'])
-   # delta_bands = pd.DataFrame(delta, columns = ['delta_power_1','delta_power_2','delta_power_3','delta_power_4','delta_power_5','delta_power_6','delta_power_7','delta_power_8'])
-
-
-   # df_combined = pd.concat([alpha_bands,beta_bands,gamma_bands,theta_bands,delta_bands], axis=1)
-   # st.write(df_combined)
-   # df_combined.to_csv("eeg_datacombined_yoga.csv")
-
+ 
    channels=['FP1','FP2','C3','C4','T5','T6','O1','O2']
    fs=250
    no=fs*2
@@ -712,13 +614,18 @@ if(st.button("PREDICT")):
    fig.update_layout(yaxis_range=[0,100],yaxis_ticksuffix = "%")
    st.write(fig) 
 
-   prediction_input=np.array([[alpha_power1,alpha_power3,alpha_power5,alpha_power7,alpha_power2,alpha_power4,alpha_power6,alpha_power8,
-                               beta_power1,beta_power3,beta_power5,beta_power7,beta_power2,beta_power4,beta_power6,beta_power8,
-                               gamma_power1,gamma_power3,gamma_power5,gamma_power7,gamma_power2,gamma_power4,gamma_power6,gamma_power8,
-                               theta_power1,theta_power3,theta_power5,theta_power7,theta_power2,theta_power4,theta_power6,theta_power8,
-                               delta_power1,delta_power3,delta_power5,delta_power7,delta_power2,delta_power4,delta_power6,delta_power8
-                               ]])
-
+   prediction_input=np.array([[alpha_power1,alpha_power2,alpha_power3,alpha_power4,alpha_power5,alpha_power6,alpha_power7,alpha_power8,
+                                beta_power1,beta_power2,beta_power3,beta_power4,beta_power5,beta_power6,beta_power7,beta_power8,
+                                gamma_power1,gamma_power2,gamma_power3,gamma_power4,gamma_power5,gamma_power6,gamma_power7,gamma_power8,
+                                theta_power1,theta_power2,theta_power3,theta_power4,theta_power5,theta_power6,theta_power7,theta_power8
+                               
+                                ]])
+   # prediction_input=np.array([[alpha_power1,alpha_power2,alpha_power3,alpha_power4,
+   #                             beta_power1,beta_power2,beta_power3,beta_power4,
+   #                             gamma_power1,gamma_power2,gamma_power3,gamma_power4,
+   #                             theta_power1,theta_power2,theta_power3,theta_power4
+                               
+   #                             ]])
    scaler=StandardScaler()
    prediction_input_scaled=scaler.fit_transform(prediction_input.reshape(-1,1))
    #prediction_input_scaled
@@ -727,11 +634,20 @@ if(st.button("PREDICT")):
    #st.error(prediction_input_scaled.tolist())
    result=['normal','pain','yoga']
    eegnet_model =tf.keras.models.load_model('eeg_2dcnn_model.h5')
-   o=eegnet_model.predict(prediction_input_scaled.reshape(-1,40,1,1), batch_size=1)
+   o=eegnet_model.predict(prediction_input_scaled.reshape(-1,32,1,1), batch_size=1)
    #st.write(o)
 
-   e="EEGNET PREDICTS : "+ result[int(o.argmax())]
-   st.success(e)
+   
+   e= f"""
+        <style>
+        h1.eeg{{
+         text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;
+        }}
+        </style>
+        <h1 class="eeg">EEGNET PREDICTS : {result[int(o.argmax())]}</h1>
+        """
+
+   st.markdown(e, unsafe_allow_html=True)
 
 
    svm_model = pickle.load(open('svm_model.pkl','rb'))
@@ -739,13 +655,27 @@ if(st.button("PREDICT")):
    o=svm_model.predict(prediction_input_scaled.reshape(1,-1).tolist())
 
    #st.write(o)
-   s="SVM PREDICTS : "+result[o[0]]
-   st.info(s)
-
+   s= f"""
+        <style>
+        h1.svc{{
+         text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;
+        }}
+        </style>
+        <h1 class="svc">SVC PREDICTS : {result[o[0]]}</h1>
+        """
+   st.markdown(s, unsafe_allow_html=True)
+   
    bilstm_model =tf.keras.models.load_model('bilstm_model.h5')
-   o=bilstm_model.predict(prediction_input_scaled.reshape(-1,1,40), batch_size=1)
+   o=bilstm_model.predict(prediction_input_scaled.reshape(-1,1,32), batch_size=1)
    #st.write(o)
-   b="BILSTM PREDICTS : "+ result[int(o.argmax())]
-   st.warning(b)
-
-
+   
+   b= f"""
+        <style>
+        h1.bilstm{{
+         text-align:center; color:black;background-color:#B5C489;font-size:14pt;border:5px solid black;
+        }}
+        </style>
+        <h1 class="bilstm">BILSTM PREDICTS : {result[int(o.argmax())]}</h1>
+        """
+   st.markdown(b, unsafe_allow_html=True)
+   
